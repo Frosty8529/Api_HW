@@ -1,0 +1,59 @@
+[
+  {
+    "firstname": "John",
+    "lastname": "Beckman",
+    "age": "24",
+    "gender": "male",
+    "Address": {
+      "zip code": "10110",
+      "street": "Sukhumvit Road",
+      "district": "Bangkrew",
+      "sub_district": "Mahasawasd",
+      "province": "Nonthaburi",
+      "country": "Thailand"
+    },
+    "Contact": {
+      "mobile": "0623592840",
+      "email": "JohnXBecky@gmail.com",
+      "line id": "Johnny062"
+    }
+  },
+  {
+    "firstname": "Jessie",
+    "lastname": "Ackerman",
+    "age": "31",
+    "gender": "female",
+    "Address": {
+      "zip code": "10100",
+      "street": "Rajawong Road",
+      "district": "Min Buri",
+      "sub_district": "Saen Saep",
+      "province": "Bangkok",
+      "country": "Thailand"
+    },
+    "Contact": {
+      "mobile": "0952385635",
+      "email": "Jess021Pro@gmail.com",
+      "line id": "Jess021"
+    }
+  },
+  {
+    "firstname": "Erwin",
+    "lastname": "Sheeran",
+    "age": "39",
+    "gender": "male",
+    "Address": {
+      "zip code": "10600",
+      "street": "Charoennakorn Road",
+      "district": "Huai Khwang",
+      "sub_district": "Bang Kapi",
+      "province": "Bangkok",
+      "country": "Thailand"
+    },
+    "Contact": {
+      "mobile": "0845282957",
+      "email": "Errr999@gmail.com",
+      "line id": "Erwin999"
+    }
+  }
+]

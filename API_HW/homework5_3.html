@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HW5.3</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+      table tr td {
+        border: 1px solid rgb(255, 255, 255);
+        padding: 20px;
+      }
+    </style>
+  </head>
+
+  <body class="text-center p-10">
+    <table class="mx-auto">
+      <h1 class="font-bold text-2xl mb-4">Hello ReqRes users!</h1>
+      <tr id="rowDisplay"></tr>
+    </table>
+    <script>
+      let aUser = [];
+      axios.get("https://reqres.in/api/users").then(function (response) {
+        console.log(response);
+
+        const requests = response.data.data.map((user) => {
+          let first_name = user.first_name;
+          const genderRequest = axios.get(
+            `https://api.genderize.io?name=${first_name}`
+          );
+          const ageRequest = axios.get(
+            `https://api.agify.io/?name=${first_name}`
+          );
+
+          return Promise.all([genderRequest, ageRequest]).then((responses) => {
+            const gender = responses[0].data.gender;
+            const age = responses[1].data.age;
+
+            aUser.push([gender, age]);
+          });
+        });
+        // Wait for all gender and age requests to complete
+        Promise.all(requests).then(() => {
+          console.log(aUser);
+
+          let rowDisplay = document.getElementById("rowDisplay");
+          let textHtml = "";
+          for (let i = 0; i < response.data.data.length; i++) {
+            let img = "<p><img src='" + response.data.data[i].avatar + "'></p>";
+            let email = "<p>" + response.data.data[i].email + "</p>";
+            let gender = "<p>" + aUser[i][0] + "</p>";
+            let age = "<p>" + aUser[i][1] + "</p>";
+            let first_name = `<strong class="font-bold">${response.data.data[i].first_name}</strong>`;
+
+            textHtml +=
+              "<td>" + first_name + email + gender + age + img + "</td>";
+          }
+          rowDisplay.innerHTML = textHtml;
+        });
+      });
+    </script>
+  </body>
+</html>
